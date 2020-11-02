@@ -8,17 +8,16 @@ public class User {
 	private String email;
 	private String phone;
 	private String authority;
-	private int fridgeId;
-	private int numOfRecipes;
-	private List<Recipe> recipeList;
-
+	// 자신이 가지고 있는 재료 저장. 재료의 속성은 MyIngredient에서 정의
+	private ArrayList<MyIngredient> ingredientList;
+	// 즐겨찾기한 recipeId(String)를 저장
+	private ArrayList<String> favorite;
+	
 	public User() { }
 	
-	public User(String userId, String password, String name, String email, String phone, String authority, int fridgeId, int numOfRecipes) {
+	public User(String userId, String password, String name, String email, String phone, String authority) {
 		super(userId, password, name, email, phone);
 		this.authority = authority;
-		this.fridgeId = fridgeId;
-		this.setNumOfRecipes(0);
 	}
 	
 	public User(String userId, String password, String name, String email, String phone) {
@@ -78,28 +77,20 @@ public class User {
 		this.authority = authority;
 	}
 	
-	public int getFridgeId() {
-		return fridgeId;
+	public ArrayList<MyIngredient> getIngredientList() {
+		return ingredientList;
 	}
 	
-	public int setFridgeId(int fridgeId) {
-		this.fridgeId = fridgeId;
+	public void setIngredient(ArrayList<MyIngredient> ingredientList) {
+		this.ingredientList = ingredientList;
 	}
 	
-	public int getNumOfRecipes() {
-		return numOfRecipes;
+	public ArrayList<String> getFavorite() {
+		return favorite;
 	}
 	
-	public void setNumOfRecipes(int numOfRecipes) {
-		this.numOfRecipes = numOfRecipes;
-	}
-	
-	public List<Recipe> getRecipeList() {
-		return recipeList;
-	}
-	
-	public void setRecipeList(List<Recipe> recipeList) {
-		this.recipeList = recipeList;
+	public void setFavorite(ArrayList<String> favorite) {
+		this.favorite = favorite;
 	}
 
 	/* 비밀번호 검사 */
@@ -117,5 +108,5 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", authority=" + authority + ", fridgeId=" + fridgeId + ", numOfRecipes=" + numOfRecipes + "]";
+				+ phone + ", authority=" + authority + "]";
 }
